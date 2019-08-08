@@ -1,433 +1,553 @@
 <style>
-body,
+	@charset "utf-8";
+
+/*Reset*/
+@import 'normalize.css';
+/* Change all elements to use border-box */
 html {
-  height: 100%;
-  margin: 0;
-  font-family: "Raleway", "Microsoft JhengHei";
+	box-sizing: border-box;
 }
-.wrapper {
-  min-width: 900px;
-  min-height: 1000px;
-  background: #fff;
+*, *:before, *:after {
+	box-sizing: inherit;
 }
-.header {
-  margin-top: 20px;
-  height: 300px;
-  background: #ffc107;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+/*******/
+
+.background-primary {
+	background-color: #373430;
 }
-.header h1 {
-  font-size: 3em;
+.background-secondary {
+	background-color: #FFE2B7;
 }
-.side {
-  min-height: 1000px;
-  background: #333;
-  position: absolute;
-  top: 0;
-  left: 20px;
-  width: 300px;
-  padding: 20px;
-  color: #fff;
+.background-tertiary {
+	background-color: #fffaf2;
 }
-.side h2 {
-  color: #ffc107;
+body {
+	font-family: "mr-eaves-sans", sans-serif;
 }
-.side a{
-	color:#fff;
-}
-.photo {
-  width: 250px;
-  height: 250px;
-  margin: auto;
-  margin-top: 20px;
-  border-radius: 100%;
-  background-color: #fff;
-  background-image: url("https://gravatar.com/avatar/665b562c5ca5b9b82e71367f526f5b62?s=512&d=https://static.codepen.io/assets/avatars/user-avatar-512x512-6e240cf350d2f1cc07c2bed234c3a3bb5f1b237023c204c782622e80d6b212ba.png");
-  background-size: cover;
-  border: 10px #ffc107 solid;
-}
-.info,
-.skills {
-  margin-top: 50px;
-}
-.skills p {
-  margin: 30px 0px 0px 0px;
-}
-.box-ck,
-.box {
-  display: inline-flex;
-  width: 23px;
-  height: 5px;
-  margin: 0px 1px;
-}
-.box {
-  background: #eee;
-}
-.box-ck {
-  background: #ffc107;
-}
-.content,
-.header * {
-  margin-left: 370px;
-}
-.content {
-  padding: 20px;
-}
-.content p{
-  text-align: justify;
-  letter-spacing:0.5px;
-  line-height:1.5
-}
-.line {
-  border-bottom: 1px solid #ffc107 !important;
-  position: relative;
-}
-.line:before {
-  content: "";
-  position: absolute;
-  display: inline-block;
-  border: 3px solid #ffc107;
-  border-width: 3px 20px;
-  top: -3px;
-  border-radius: 3px;
-}
-a{
-  text-decoration:none;
-	color:#333;
-}
-.content a {
-  display: inline-block;
-  position: relative;
-  font-weight:bold;
-  padding:0px;
-}
-.content a:before, .content a:after {
-  content: '';
-  display: block;
-  position: absolute;
-  height: 2px;
-  width: 0;
-}
-.content a:before {
-  transition: width 0s ease,background .4s ease;
-  bottom: -2px;
-}
-.content a:after {
-  right: 2.2%;
-  bottom: -2px;
-  background: #ffc107;
-  transition: width .4s ease;
-}
-.content a:hover:before {
-  width: 97.8%;
-  background: #ffc107;
-  transition: width .4s ease;
-}
-.content a:hover:after {
-  width: 97.8%;
-  background: 0 0;
-  transition: all 0s ease;
-}
-.content h3 span{
-  display:inline-block;
-}
-.quote {
- position: relative;
- font-family: 'Roboto', sans-serif;
- line-height: 150%;
-}
-.quote:before {
-  color: #000;
-  content: "\201C";
-  font-size: 1.5em;
-  position:absolute;
-  left:-45px;
-  top: 25px;
-  line-height: 0.1em;
-}
-.quote:after {
-  color: #000;
-  content: "\201D";
-  font-size: 1.5em;
-  position:absolute;
-  right:-40px;
-  bottom: -10px;
-  line-height: 0.1em;
-}
-.text-center{
-  text-align:center;
-}
-/* Timeline */
-.timeline {
-  border-left: 4px solid #ffc107;
-  border-bottom-right-radius: 4px;
-  border-top-right-radius: 4px;
-  margin: 20px auto;
-  letter-spacing: 0.5px;
-  position: relative;
-  line-height: 1.4em;
-  font-size: 1.03em;
-  padding: 10px 15px;
-  list-style: none;
-  text-align: left;
-  max-width: 50%;
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
 }
 
-.timeline .event {
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-  position: relative;
+@media (min-width: 48em) {
+[class*='col-'] {
+	float: left;
 }
-.timeline .event:last-of-type {
+.col-2-3 {
+	width: 66.6666%;
+}
+.col-1-3 {
+	width: 33.3333%;
+}
+.col-1-9 {
+	width: 11.1111%;
+	min-height: 1px;
+}
+}
+header {
+	color: #FFE2B7;
+	text-align: center;
+}
+header .row {
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+}
 
-  border: none;
+@media (max-width: 48em) {
+header .row {
+	flex-flow: column;
 }
-.timeline .event:before,
-.timeline .event:after {
-  position: absolute;
-  display: block;
-  top: 0;
 }
-.timeline .event:before {
-  left: -160px;
-  content: attr(data-date);
-  text-align: right;
-  font-weight: 100;
-  font-size: 0.9em;
-  min-width: 120px;
+header h2 {
+	font-family: "reklame-script", serif;
+	font-weight: 400;
 }
-.timeline .event:after {
-  box-shadow: 0 0 0 4px #ffc107;
-  left: -23px;
-  background: #fff;
-  border-radius: 50%;
-  height: 11px;
-  width: 11px;
-  content: "";
-  top: 5px;
+header h1 {
+	font-size: 5em;
+	font-weight: 100;
+	line-height: 0.8em;
+	margin: 0;
 }
-@media screen and (max-width: 650px) {
-  .wrapper {
-    min-width: inherit;
-    min-height: auto;
-    background: #fff;
-  }
-  .side {
-    min-height: inherit;
-    background: #333;
-    /*color: inherit;*/
-    position: inherit;
-    width:inherit;
-  }
-  .side h2 {
-    color: inherit;
-  }
-  .content,
-  .header * {
-    margin-left: 0px;
-  }
-  .header {
-    margin-top: 0px;
-    height: auto;
-  }
-  .header .photo {
-    display: block !important;
-    border: 8px #ffffff solid;
-    margin: 0;
-    width: 220px;
-    height: 220px;
-    margin-top:30px;
-  }
-  .header h3 {
-    margin-bottom:50px;
-  }
-  .side .photo {
-    display: none;
-  }
-  .timeline{
-    margin-left:100px;
-  }
-  .content h3 span{
-  display:block;
-    line-height:1.5
-  }
+header h3 {
+	font-size: 1.5em;
+	font-weight: 100;
+	margin-top: 10px;
+	margin-bottom: 20px;
 }
-</style>
-<div class="wrapper">
-  <div class="header">
-    <div class="photo" style="display:none">
+header img {
+	max-width: 150px;
+	padding: 15px;
+}
+header .contact {
+	width: 45%;
+	margin: 5px auto;
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+}
+header ul {
+	padding-left: 0px;
+}
+header li {
+	list-style-type: none;
+	margin: 15px;
+}
+@media (max-width: 48em) {
+	header .contact {
+		flex-flow: column;
+	}
+	header li {
+		margin: 5px 0px 15px 5px;
+	}
+}
+nav {
+	background-color: #DDB97F;
+	text-align: center;
+	line-height: 1.5em;
+}
+nav ul {
+	display: flex;
+	flex-flow: row;
+	justify-content: space-around;
+	align-items: center;
+	padding-left: 0;
+}
+
+@media (max-width: 48em) {
+nav ul {
+	flex-flow: column;
+	justify-content: flex-start;
+}
+	nav ul {
+		padding: 15px 0px;
+	}
+	nav ul li {
+		text-decoration: underline;
+	}
+}
+nav ul li {
+	list-style-type: none;
+	display: inline-block;
+	color: #373430;
+	font-family: "reklame-script", serif;
+	font-size: 1.5em;
+	margin: 0px 20px;
+	padding: 5px 10px;
+	transition: all 0.3s ease 0s;
+}
+nav ul li:hover {
+	color: #FFE1B7;
+	background-color: #373430;
+	cursor: pointer;
+}
+nav a {
+	color: #373430;
+	text-decoration: none;
+}
+nav a:hover {
+	color: #FFE1B7;
+}
+section {
+	width: 80%;
+	margin: 20px auto;
+}
+section h1, section h2 {
+	font-family: "reklame-script", serif;
+	color: #373430;
+	font-weight: 400;
+	margin: 5px 10px;
+}
+section h1 {
+	border-bottom: 1px solid #835B1B;
+}
+#section2 article, #section3 article {
+	margin-top: 0;
+}
+
+@media (max-width: 48em) {
+#timeline {
+	visibility: hidden;
+	height: 1px;
+}
+}
+
+@media (min-width: 48em) {
+#section1 .row {
+	width: 90%;
+	margin: 0px auto;
+}
+#section1 h1 {
+	text-align: center;
+}
+}
+#section1 p {
+	color: #835B1B;
+	font-style: italic;
+	margin: 5px;
+}
+#section1 h3 {
+	font-size: 1.3em;
+	line-height: 1em;
+	margin: 10px 5px;
+}
+#section1 h4 {
+	color: #373430;
+	font-size: 1em;
+	font-weight: normal;
+	margin: 5px;
+}
+#section1 ul {
+	text-align: center;
+	padding-left: 0;
+}
+#section1 ul li {
+	list-style-type: none;
+	padding: 5px;
+}
+#section1 mark {
+	color: #FFE1B7;
+	background-color: #373430;
+	padding: 2px 7px;
+}
+article {
+	margin: 10px;
+	padding: 10px;
+}
+
+@media (min-width: 48em) {
+#article1, #article2 {
+	text-align: right;
+}
+#article1 {
+	margin-top: 20px;
+	min-height: 200px;
+}
+#article2 {
+	min-height: 230px;
+}
+#article3 {
+	margin-top: 110px;
+}
+#article4 {
+	min-height: 210px;
+}
+}
+#article5 p {
+	margin: 5px;
+}
+#article5 span {
+	color: #835B1B;
+	font-style: italic;
+}
+#article5 .sep {
+	font-size: 1.3em;
+	font-style: normal;
+	font-weight: 700;
+	color: #835B1B;
+}
+#article6 h2 {
+	text-align: center;
+}
+#tag-cloud {
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	line-height: 1.5em;
+}
+#cloud-left {
+	width: 50%;
+	text-align: right;
+	margin-left: 20%;
+	margin-right: 5px;
+}
+#cloud-right {
+	width: 50%;
+	margin-right: 20%;
+	margin-left: 5px;
+}
+
+@media (max-width: 48em) {
+#cloud-left {
+	margin-left: 1%;
+	margin-right: 0;
+}
+#cloud-right {
+	margin-right: 1%;
+	margin-left: 0;
+}
+}
+#tag1 {
+	font-size: 2.1em;
+}
+#tag2 {
+	font-size: 1.8em;
+	font-weight: bold;
+}
+#tag3 {
+	font-size: 3em;
+	color: #835B1B;
+}
+#tag4 {
+	font-size: 1.9em;
+	font-weight: 100;
+}
+#tag5 {
+	font-size: 2.2em;
+	font-style: italic;
+}
+#tag6 {
+	font-size: 2.5em;
+	font-weight: 100;
+}
+#tag7 {
+	font-size: 3em;
+	color: #835B1B;
+}
+#tag8 {
+	font-size: 1.7em;
+	font-style: italic;
+}
+#tag9 {
+	font-size: 2.3em;
+}
+#tag10 {
+	font-size: 1.3em;
+	font-weight: 100;
+}
+#tag11 {
+	font-size: 1.7em;
+	font-weight: bold;
+}
+#article7 div {
+	display: flex;
+	flex-flow: row;
+}
+#section3 ul {
+	padding-left: 0px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+#section3 li {
+	list-style-type: none;
+	margin: 8px 10px 8px 0px;
+}
+.circles {
+	color: #835B1B;
+}
+footer {
+	color: #FFE1B7;
+	text-align: center;
+	display: flex;
+	flex-flow: row;
+	justify-content: space-between;
+	align-items: center;
+}
+@media (max-width: 48em) {
+	footer {
+		flex-flow: column;
+		justify-content: center;
+	}
+}
+footer h1 {
+	font-family: "reklame-script", serif;
+	font-weight: 400;
+	margin: 10px 0px 0px 0px;
+}
+footer h2 {
+	margin-top: 10px;
+}
+#connect {
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+}
+footer a {
+	color: #FFE1B7;
+	margin: 0px 5px;
+	transition: all 0.3s ease 0s;
+}
+footer a:hover {
+	cursor: pointer;
+	color: #DDB97F;
+}
+footer img {
+	margin-left: 10px;
+}
+footer p {
+	margin-right: 10px;
+}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SamKGo | Resume</title>
+<link rel="shortcut icon" href="../../../images/favicon_sk.ico">
+<link href="css/style_resume.css" rel="stylesheet" type="text/css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<script src="https://use.typekit.net/xgu2cay.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+</head>
+
+<body>
+<header class="background-primary">
+  <div class="row">
+    <div class="col-1-3"><img src="http://www.samkgo.com/training/edX/css-introduction/images/photo_sk.png" alt="profile image"/> </div>
+    <div class="col-1-3">
+      <h2>SamKGo</h2>
+      <h1>Sarah Kahnert</h1>
+      <h3>Biologist | Graphic Designer</h3>
     </div>
-    <h1 class="quote">Wendy-Ho</h1>
-    <h3>Persevere | Innovation | Dream</h3>
+    <div class="col-1-3"><img src="http://www.samkgo.com/training/edX/css-introduction/images/logo_sk_header.png" alt="logo"/> </div>
   </div>
-  <div class="side">
-    <div class="photo">
-    </div>
-    <div class="info">
-      <h2>INFO</h2>
-      <div class="line"></div>
-      <p>Name：sandhya ky</p>
-      <p>Phone： 9108243398</p>
-      <p>E-mail： Ssandykapse781@gmail.com</p>
-      <p>Address： mijar,manglore</p>
-    </div>
-    <div class="skills">
-      <h2>Languages</h2>
-      <div class="line"></div>
-      <p>HTML5 ［90%］</p>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box"></span>
-      <p>CSS3 ［85%］</p>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box"></span>
-      <span class="box"></span>
-      <p>Javascript ［10%］</p>
-      <span class="box-ck"></span>
-      <span class="box"></span>
-      <span class="box"></span>
-      <span class="box"></span>
-      <span class="box"></span>
-      <span class="box"></span>
-      <span class="box"></span>
-      <span class="box"></span>
-      <span class="box"></span>
-      <span class="box"></span>
-      <br><br>
-      <h2>TOOLS</h2>
-      <div class="line"></div>
-      <p>Photoshop ［90%］</p>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box"></span>
-      <p>Illustrator ［90%］</p>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box"></span>
-      <p>InDesign ［70%］</p>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box"></span>
-      <span class="box"></span>
-      <span class="box"></span>
-      <p>Dreamweaver ［90%］</p>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box"></span>
-      <p>Premiere ［50%］</p>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box"></span>
-      <span class="box"></span>
-      <span class="box"></span>
-      <span class="box"></span>
-      <span class="box"></span>
-      <p>Sublime ［80%］</p>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box"></span>
-      <span class="box"></span>
-      <p>SVN ［70%］</p>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box-ck"></span>
-      <span class="box"></span>
-      <span class="box"></span>
-      <span class="box"></span>
-    </div>
-  </div>
-  <div class="content">
-    <h2>ABOUT ME</h2>
-    <div class="line"></div>
-    <p></p>
-    <h2>EXPERIENCE</h2>
-    <div class="line"></div>
-    <h3 class="text-center">
-      <span>NOW-2015</span>
-      <span>台灣析數股份有限公司</span>
-      <span>視覺化介面設計師</span>
-    </h3>
-    <ul class="timeline">
-      <li class="event" data-date="Design">
-        <h3>平面設計</h3>
-        <p></p>
-      </li>
-      <li class="event" data-date="Web">
-        <h3>RWD網頁設計</h3>
-        <p>傳藝資源網UI設計</p>
-        <p>傳藝資源網後台管理系統介面設計</p>
-        <p><a target="_blank" href="http://www.asia-analytics.com.tw/tw/index.jsp">台灣析數網站建置 [點]</a></p>
-        <p><a target="_blank" href="http://psdatatech.com/cn/index.asp">大陸企業普策數網站建置 [點]</a></p>
-        <p>台灣析數iPASP系統產品介面設計</p>
-        <p>台灣析數iCAP系統產品介面設計</p>
-      </li>
+  <div class="row">
+    <ul class="contact">
+      <li><i class="fa fa-map-marker"></i>&nbsp; Heidelberg, Germany</li>
+      <li><i class="fa fa-phone"></i>&nbsp; +49 123 1234567</li>
+      <li><i class="fa fa-envelope"></i>&nbsp; samkgo@xxx.com</li>
     </ul>
-    <h2>EDUCATION</h2>
-    <div class="line"></div>
-    <ul class="timeline">
-      <li class="event" data-date="2016-2012">
-        <h3>德明財經科技大學</h3>
-        <p>多媒體設計</p>
-      </li>
-      <li class="event" data-date="2012-2009">
-        <h3>金甌女中</h3>
-        <p>資料處理</p>
-      </li>
-    </ul>
   </div>
-</div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#link1"><i class="fa fa-briefcase" aria-hidden="true"></i> Work Experience</a></li>
+    <li><a href="#link2"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Education</a></li>
+    <li><a href="#link3"><i class="fa fa-certificate" aria-hidden="true"></i> Advanced Training</a></li>
+    <li><a href="#link4"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Skills</a></li>
+    <li><a href="#link5"><i class="fa fa-globe" aria-hidden="true"></i> Connect</a></li>
+  </ul>
+</nav>
+<main>
+  <section id="section1" class="background-tertiary">
+    <div class="row">
+      <div class="col-1-9"></div>
+      <div class="col-1-3">
+        <h1 id="link1"><i class="fa fa-briefcase" aria-hidden="true"></i> Work Experience</h1>
+        <article id="article1" class="background-secondary">
+          <p class="date">January 2009–Present</p>
+          <h3>Research Assistant | Science Communication</h3>
+          <h4>German Cancer Research Center, Unit Cancer Prevention</h4>
+        </article>
+        <article id="article2" class="background-secondary">
+          <p class="date">Before January 2009</p>
+          <h3>Freelancer in market research and employee in gastronomy sector</h3>
+          <h4>Gesellschaft für Innovative Marktforschung, Coyote Café, Hard Rock Café and others</h4>
+        </article>
+      </div>
+      <div id="timeline" class="col-1-9">
+        <h1><i class="fa fa-calendar" aria-hidden="true"></i></h1>
+        <ul>
+          <li>
+            <mark>2016</mark>
+          </li>
+          <li>2015</li>
+          <li>2014</li>
+          <li>
+            <mark>2013</mark>
+          </li>
+          <li>2012</li>
+          <li>2011</li>
+          <li>
+            <mark>2010</mark>
+          </li>
+          <li>
+            <mark>2009</mark>
+          </li>
+          <li>
+            <mark>2008</mark>
+          </li>
+          <li>2007</li>
+          <li>2006</li>
+          <li>2005</li>
+          <li>2004</li>
+          <li>2003</li>
+          <li>2002</li>
+          <li>
+            <mark>2001</mark>
+          </li>
+        </ul>
+      </div>
+      <div class="col-1-3">
+        <h1 id="link2"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Education</h1>
+        <article id="article3" class="background-secondary">
+          <p class="date">December 2010–July 2013</p>
+          <h3>Certified Graphic Designer</h3>
+          <h4>Correspondence course at Fernakademie für Erwachsenenbildung, Hamburg, Germany</h4>
+        </article>
+        <article id="article4" class="background-secondary">
+          <p class="date">October 2001–September 2008</p>
+          <h3>Graduate Biologist | Dipl.-Biol.</h3>
+          <h4>Studies at Heidelberg University and Goethe University Frankfurt, Germany</h4>
+        </article>
+      </div>
+      <div class="col-1-9"></div>
+    </div>
+  </section>
+  <section id="section2" class="background-tertiary">
+   <div class="row">
+    <h1 id="link3"><i class="fa fa-certificate" aria-hidden="true"></i> Advanced Training</h1>
+    <article id="article5" class="background-secondary">
+      <p>Selection of attendance-based and online courses (one-day to several-week)</p>
+      <p><span>November–December 2016</span> | <b>Microsoft | DEV218x: Advanced CSS Concepts</b> | edX <span class="sep">//</span><span> November–December 2016</span> | <b>W3Cx | CSS.0x: CSS Introduction</b> | edX <span class="sep">//</span><span> November 2016</span> | <b>Microsoft Excel/Access</b> | GFN, Heidelberg, Germany <span class="sep">//</span><span> June–July 2016</span> | <b>W3Cx | HTML5 Part 2: Advanced Techniques for Designing HTML5 Apps</b> | edX <span class="sep">//</span><span> May–June 2016</span> | <b>W3Cx | HTML5 Part 1: HTML5 Coding Essentials and Best Practices</b> | edX <span class="sep">//</span><span> April–May 2016</span> | <b>W3Cx | HTML5.0x: HTML5 Introduction</b> | edX <span class="sep">//</span><span> April 2015</span> | <b>Publishing for Digital Media</b> | Cleverprinting, Frankfurt on the Main, Germany <span class="sep">//</span><span> October 2014</span> | <b>Office Productivity Workshop</b> | Cancom, Stuttgart, Germany <span class="sep">//</span><span> April 2013</span> | <b>Typography for Graphic and Communication Designers</b> | Wolfgang Beinert, Berlin, Germany <span class="sep">//</span><span> February 2013</span> | <b>Online Communication</b> | National Institute of Science Communication, Karlsruhe, Germany <span class="sep">//</span><span> January 2013</span> | <b>Inner Success</b> | Calvin Hollywood Photography, Oftersheim, Germany <span class="sep">//</span><span> October 2012</span> | <b>Color Management</b> | College of Higher Education, Frankfurt on the Main, Germany <span class="sep">//</span><span> October 2012</span> | <b>Acrobat – PDF as Prepress</b> | College of Higher Education, Frankfurt on the Main, Germany <span class="sep">//</span><span> August 2012</span> | <b>Website Programming with HTML</b> | College of Higher Education, Heidelberg, Germany <span class="sep">//</span><span> April–July 2012</span> | <b>Basic Principles in Biostatistics</b> | German Cancer Research Center, Heidelberg, Germany <span class="sep">//</span><span> December 2011</span> | <b>XAMPP with MySQL and PHP</b> | College of Higher Education, Heidelberg, Germany <span class="sep">//</span><span> September 2010</span> | <b>Writing Workshop for Scientists</b> | Klaus Tschira Foundation, Heidelberg, Germany <span class="sep">//</span><span> June 2010</span> | <b>Poster Design – Techniques</b> | German Cancer Research Center, Heidelberg, Germany</p>
+    </article>
+	  </div>
+  </section>
+  <section id="section3" class="background-tertiary">
+    <h1 id="link4"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Skills</h1>
+    <div class="row">
+      <div class="col-2-3">
+        <article id="article6" class="background-secondary">
+          <h2><i class="fa fa-bar-chart" aria-hidden="true"></i> analytical | creative <i class="fa fa-paint-brush" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;</h2>
+          <div id="tag-cloud">
+            <div id="cloud-left">
+              <p><span id="tag1">research</span><br>
+                <span id="tag2">study evaluation</span>&nbsp;&nbsp;&nbsp; <span id="tag3">scientific writing</span> <span id="tag4">statistical analysis</span>&nbsp;&nbsp;&nbsp; <span id="tag5">editing</span></p>
+            </div>
+            <div id="cloud-right">
+              <p><span id="tag6">illustration</span>&nbsp;&nbsp;&nbsp; <br>
+                <span id="tag7">print</span>&nbsp;&nbsp;&nbsp; <span id="tag8">drawing</span>&nbsp;&nbsp;&nbsp; <br>
+                <span id="tag9">digital art</span>&nbsp;&nbsp;&nbsp; 
+                <span id="tag10">photography</span><br><span id="tag11">web design</span></p>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="col-1-3">
+        <article id="article7" class="background-secondary">
+          <h2><i class="fa fa-desktop" aria-hidden="true"></i> <i class="fa fa-wrench" aria-hidden="true"></i> tools</h2>
+          <div id="tools">
+            <ul>
+              <li>InDesign</li>
+              <li>Illustrator</li>
+              <li>Photoshop</li>
+              <li>Dreamweaver</li>
+              <li>Office</li>
+            </ul>
+            <ul class="circles">
+              <li><i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle-o" aria-hidden="true"></i></li>
+              <li><i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle-o" aria-hidden="true"></i> <i class="fa fa-circle-o" aria-hidden="true"></i></li>
+              <li><i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle-o" aria-hidden="true"></i> <i class="fa fa-circle-o" aria-hidden="true"></i></li>
+              <li><i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle-o" aria-hidden="true"></i> <i class="fa fa-circle-o" aria-hidden="true"></i> <i class="fa fa-circle-o" aria-hidden="true"></i> <i class="fa fa-circle-o" aria-hidden="true"></i></li>
+              <li><i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle" aria-hidden="true"></i> <i class="fa fa-circle-o" aria-hidden="true"></i></li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="background-primary"> <img src="http://www.samkgo.com/training/edX/css-introduction/images/logo_sk_footer.png" width="100" height="100" alt="logo"/>
+  <div>
+    <h1 id="link5"><i class="fa fa-globe" aria-hidden="true"></i> Connect | Check me out</h1>
+    <div id="connect">
+      <h2><a href="https://de.linkedin.com/in/sarah-kahnert/en" title="LinkedIn" target="_blank"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a></h2>
+      <h2><a href="https://www.behance.net/samgokahnert" title="Behance" target="_blank"><i class="fa fa-behance-square fa-2x" aria-hidden="true"></i></a></h2>
+      <h2><a href="https://twitter.com/SamKGo" title="Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a></h2>
+      <h2><a href="https://www.instagram.com/samkgo/" title="Instagram" target="_blank"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a></h2>
+    </div>
+  </div>
+  <p id="copyright">© SamKGo</p>
+</footer>
+</body>
+</html>
